@@ -1,0 +1,18 @@
+{
+    "clients" : [
+        {
+            "id_client": "AA000000",
+            "nom": "Le Gaulois",
+            "prenom": "Astérix",
+            "date_naissance": "29/10/1959",
+            "email": "asterix@gaule.fr"
+        },
+        {
+            "id_client": "ZZ999999",
+            "nom": "Le Gaulois",
+            "prenom": "Obélix",
+            "date_naissance": "29/10/1959",
+            "email": "obelix@gaule.fr"
+        }
+    ]
+}
