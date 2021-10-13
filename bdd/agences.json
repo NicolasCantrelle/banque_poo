@@ -1,14 +1,12 @@
-{
-    "agences" : [
-        {
-            "code_agence": 100,
-            "nom": "Agence Tourix",
-            "adresse": "Armorique"
-        },
-        {
-            "code_agence": 999,
-            "nom": "Formation tortue",
-            "adresse": "Rome"
-        }
-    ]
-}
+[
+    {
+        "code_agence": 100,
+        "nom": "Agence Tourix",
+        "adresse": "Armorique"
+    },
+    {
+        "code_agence": 999,
+        "nom": "Formation tortue",
+        "adresse": "Rome"
+    }
+]
