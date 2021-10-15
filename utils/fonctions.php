@@ -1,7 +1,5 @@
 <?php
 
-include("constantes.php");
-
 function jsonToArray($chemin){
     $str = file_get_contents($chemin);
     if($str == null){

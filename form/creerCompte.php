@@ -8,28 +8,32 @@
 </head>
 <body onload="loadPage()">
 
-    <form id="form" action="">
+    <form id="form" action="../post/postCompte.php" method="post">
 
-        <select name="id-client" id="id-client" onchange="changeClient()" required>
+        <select name="id-client" id="id-client" required onchange="changeClient()">
             <option value="">--Sélectionner un client--</option>
         </select>
 
-        <select name="id-agence" id="id-agence" onchange="changeAgence()" hidden>
+        <select name="id-agence" id="id-agence" hidden>
             <option value="">--Sélectionner une agence--</option>
         </select>
 
-        <select name="decouvert" id="decouvert" required>
+        <select name="type-compte" id="type-compte" hidden onchange="changeType()">
+            <option value="">--Sélectionner un type de compte--</option>
+        </select>
+
+        <select name="decouvert" id="decouvert" hidden onchange="changeDecouvert()">
             <option value="">--Découvert autorisé--</option>
             <option value="O">Oui</option>
             <option value="N">Non</option>
         </select>
 
-        <label for="solde">Solde :</label>
-        <input type="number" id="solde" name="solde" required>
+        <div id="div-solde" hidden>
+            <label for="solde">Solde :</label>
+            <input type="number" id="solde" name="solde">
+        </div>
 
-        <select name="type-compte" id="type-compte" hidden>
-            <option value="">--Sélectionner un type de compte--</option>
-        </select>
+        <input type="submit" value="ENVOYER">
 
     </form>
     
