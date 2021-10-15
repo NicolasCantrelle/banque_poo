@@ -14,7 +14,7 @@
             <option value="">--Sélectionner un client--</option>
         </select>
 
-        <select name="id-agence" id="id-agence" hidden>
+        <select name="id-agence" id="id-agence" hidden onchange="changeAgence()">
             <option value="">--Sélectionner une agence--</option>
         </select>
 
@@ -33,7 +33,7 @@
             <input type="number" id="solde" name="solde">
         </div>
 
-        <input type="submit" value="ENVOYER">
+        <input id="btn-envoyer" type="submit" value="ENVOYER">
 
     </form>
     

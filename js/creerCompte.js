@@ -6,30 +6,15 @@ async function getData(chemin){
     return d;
 }
 
-async function loadPage(){
-    let clients = await getData('../bdd/clients.json');
-    if(clients.length > 0){
-        let select = document.getElementById("id-client");
-
-        for(let i=0; i<clients.length; i++){
-            let option = document.createElement("option");
-            option.value = clients[i].id_client;
-            option.text = clients[i].id_client +  " -- " + clients[i].prenom + " " + clients[i].nom;
-            select.add(option);
-        }
-    }
-    else{
-        let form = document.getElementById("form");
-        form.hidden = true;
-
-        let div = document.getElementById("aucun-client");
-        div.hidden = false;
-    }
-}
-
 function resetForm(){
-    let tropCompte = document.getElementById("trop-compte");
-    tropCompte.hidden = true;
+    let divTropCompte = document.getElementById("trop-compte");
+    divTropCompte.hidden = true;
+
+    let divAucuneAgence = document.getElementById("aucune-agence");
+    divAucuneAgence.hidden = true;
+
+    let btn = document.getElementById("btn-envoyer");
+    btn.disabled = false;
 
     let formAgence = document.getElementById("id-agence");
     formAgence.hidden = true;
@@ -41,7 +26,7 @@ function resetForm(){
     let type = document.getElementById("type-compte");
     type.hidden = true;
     type.required = false;
-    for(let i=1; i<=type.length; i++){
+    for(let i=0; i<=type.length; i++){
         type.remove(1);
     }
 
@@ -53,44 +38,73 @@ function resetForm(){
     divSolde.hidden = true;
     let solde = document.getElementById("solde");
     solde.required = false;
-
 }
 
+async function loadPage(){
+    let clients = await getData('../bdd/clients.json');
+
+    if(clients.length > 0){
+        let formIdClient = document.getElementById("id-client");
+
+        clients.forEach(client => {
+            let option = document.createElement("option");
+            option.value = client.id_client;
+            option.text = client.id_client +  " -- " + client.prenom + " " + client.nom;
+            formIdClient.add(option);
+        });
+    }
+    else{
+        let divAucunClient = document.getElementById("aucun-client");
+        divAucunClient.hidden = false;
+    }
+}
+
+let compteSelected = [];
+let typeCompteBdd = [];
 async function changeClient(){
 
     resetForm();
 
     let idClient = document.getElementById("id-client").value;
 
-    let allComptes = await getData('../bdd/comptes.json');
+    compteSelected = [];
+    typeCompteBdd = [];
+    if(idClient !== ""){
+        let allComptes = await getData('../bdd/comptes.json');
 
-    let compteSelect = [];
-    let typeCompteBdd = [];
-    allComptes.forEach(compte => {
-        if(compte.id_client == idClient){
-            compteSelect.push(compte);
-            typeCompteBdd.push(compte.type_compte);
+        allComptes.forEach(compte => {
+            if(compte.id_client == idClient){
+                compteSelected.push(compte);
+                typeCompteBdd.push(compte.type_compte);
+            }
+        });
+
+        let formAgence = document.getElementById("id-agence");
+        if(compteSelected.length > 2){
+            let tropCompte = document.getElementById("trop-compte");
+            tropCompte.hidden = false;
+            let btn = document.getElementById("btn-envoyer");
+            btn.disabled = true;
         }
-    });
-
-    if(compteSelect.length > 2){
-        let tropCompte = document.getElementById("trop-compte");
-        tropCompte.hidden = false;
-    }
-    else{
-        if(compteSelect.length == 0 && idClient.length == 8){
-            let formAgence = document.getElementById("id-agence");
+        else if(compteSelected.length > 0){
+            let option = document.createElement("option");
+            option.value = compteSelected[0]["code_agence"];
+            formAgence.add(option);
+            option.selected = true;
+            console.log("ICI 2");
+            changeAgence();
+        }
+        else if(compteSelected.length == 0){
             formAgence.hidden = false;
             formAgence.required = true;
 
             let agences = await getData('../bdd/agences.json');
 
             if(agences.length == 0){
-                let form = document.getElementById("form");
-                form.hidden = true;
-
                 let div = document.getElementById("aucune-agence");
                 div.hidden = false;
+                let btn = document.getElementById("btn-envoyer");
+                btn.disabled = true;
             }
             else{
                 agences.forEach(agence => {
@@ -101,56 +115,27 @@ async function changeClient(){
                 });
             }
         }
-        
-        if(compteSelect.length > 0){
-            let formAgence = document.getElementById("id-agence");
-            let option = document.createElement("option");
-            option.value = compteSelect[0]["code_agence"];
-            formAgence.add(option);
-            option.selected = true;
-        }
-
-        if(idClient.length == 8){
-            let type = document.getElementById("type-compte");
-            type.hidden = false;
-            type.required = true;
-
-            let typeCompteDispo = ["Livret A", "Courant", "PEL"];
-            let typeCompteRestant = typeCompteDispo.filter(x => !typeCompteBdd.includes(x)).concat(typeCompteBdd.filter(x => !typeCompteDispo.includes(x)));
-
-            typeCompteRestant.forEach(t => {
-                let option = document.createElement("option");
-                option.value = t;
-                option.text = t;
-                type.add(option);
-            });
-        }
     }
-    
 }
 
-async function changeAgence(){
+function changeAgence(){
+
     let type = document.getElementById("type-compte");
+    for(let i=0; i<=type.length; i++){
+        type.remove(1);
+    }
     type.hidden = false;
     type.required = true;
 
-    let agences = await getData('../bdd/agences.json');
+    let typeCompteDispo = ["Livret A", "Courant", "PEL"];
+    let typeCompteRestant = typeCompteDispo.filter(x => !typeCompteBdd.includes(x)).concat(typeCompteBdd.filter(x => !typeCompteDispo.includes(x)));
 
-    if(agences.length == 0){
-        let form = document.getElementById("form");
-        form.hidden = true;
-
-        let div = document.getElementById("aucune-agence");
-        div.hidden = false;
-    }
-    else{
-        agences.forEach(agence => {
-            let option = document.createElement("option");
-            option.value = agence.code_agence;
-            option.text = agence.code_agence +  " -- " + agence.nom;
-            formAgence.add(option);
-        });
-    }
+    typeCompteRestant.forEach(t => {
+        let option = document.createElement("option");
+        option.value = t;
+        option.text = t;
+        type.add(option);
+    });
 }
 
 function changeType(){
@@ -161,11 +146,14 @@ function changeType(){
 
 function changeDecouvert(){
     let decouvert = document.getElementById("decouvert").value;
+
     let divSolde = document.getElementById("div-solde");
     divSolde.hidden = false;
+
     let solde = document.getElementById("solde");
     solde.required = true;
-    solde.removeAttribute("min")
+    solde.removeAttribute("min");
+
     if(decouvert == "N"){
         solde.min = "0";
         solde.value = "500";
@@ -174,4 +162,3 @@ function changeDecouvert(){
         solde.value = "-500";
     }
 }
-

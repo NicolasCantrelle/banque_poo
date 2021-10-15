@@ -16,6 +16,14 @@
         "decouvert_autorise": true
     },
     {
+        "id_compte": "77777777777",
+        "code_agence": "100",
+        "id_client": "AA000000",
+        "type_compte": "Livret A",
+        "solde": 888.88,
+        "decouvert_autorise": false
+    },
+    {
         "id_compte": "55555555555",
         "code_agence": "999",
         "id_client": "ZZ999999",
