@@ -1,61 +1,72 @@
 <?php
 class Client{
-    private string $genre;
+    private string $id;
     private string $nom;
     private string $prenom;
-    private int $age;
+    private string $dateNaissance;
     private string $mail;
-    public function __construct(string $genre, string $nom, string $prenom, int $age, string $mail){
-        $this -> genre = $genre;
+
+    public function __construct(string $nom, string $prenom, string $dateNaissance, string $mail){
+        $this -> id = rand(10000000000, 99999999999);
         $this -> nom = $nom;
         $this -> prenom = $prenom;
-        $this -> age = $age;
+        $this -> dateNaissance = $dateNaissance;
         $this -> mail = $mail;
     }
 
-    public function getGenre(){
-        return $this -> genre;
-    }
-    public function setGenre(string $genre){
-        return $this -> genre = $genre;
+    public function getId(){
+        return $this->id;
     }
 
-public function getNom(){
-    return $this -> nom;
-}
-public function setNom(string $nom){
-    return $this -> nom = $nom;
+    public function setId($id){
+        $this->id = $id;
+    }
+
+    public function getNom(){
+        return $this -> nom;
+    }
+
+    public function setNom(string $nom){
+        return $this -> nom = $nom;
+    }
+
+    public function getPrenom(){
+        return $this -> prenom;
+    }
+
+    public function setPrenom(string $prenom){
+        return $this -> prenom = $prenom;
+    }
+
+    public function getDateNaissance(){
+        return $this -> dateNaissance;
+    }
+
+    public function setDateNaissance(string $dateNaissance){
+        return $this -> dateNaissance = $dateNaissance;
+    }
+
+    public function getMail(){
+        return $this -> mail;
+    }
+
+    public function setMail(string $mail){
+        return $this -> mail = $mail;
+    }
+
+    public function __toString(){
+        return("Client : " . $this->getNom() . ", " . $this->getPrenom(). ", " . $this->getDateNaissance(). ", " . $this->getMail());
+    }
+    
+    public function toTab(){
+        $tab = [];
+        $tab["id_agence"] = $this-> getId();
+        $tab["nom"] = $this-> getNom();
+        $tab["prenom"] = $this-> getPrenom();
+        $tab["date_naissance"] = $this-> getDateNaissance();
+        $tab["email"] = $this-> getMail();
+        return($tab);
+    }
 }
 
-public function getPrenom(){
-    return $this -> prenom;
-}
-public function setPrenom(string $prenom){
-    return $this -> prenom = $prenom;
-}
-
-public function getAge(){
-    return $this -> age;
-}
-public function setAge(int $age){
-    return $this -> age = $age;
-}
-
-public function getMail(){
-    return $this -> mail;
-}
-public function setMail(string $mail){
-    return $this -> mail = $mail;
-}
-
-public function __toString()
-{
-    return("Client : " . $this->getGenre() . ", " . $this->getNom() . ", " . $this->getPrenom(). ", " . $this->getAge(). ", " . $this->getMail());
-}
-public function toTab(){
-    return([$this-> getGenre(), $this-> getNom(), $this-> getPrenom(), $this-> getAge(), $this-> getMail()]);
-}
-}
-$c = new Client("Femme", "Michelle", "Claude", "48", "michellelesang@gmail.com");
-echo($c);
 ?>

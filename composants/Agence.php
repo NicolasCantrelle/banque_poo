@@ -2,17 +2,23 @@
 class Agence{
     private string $nom;
     private string $adresse;
-    private ?int $codeAgence;
+    private int $codeAgence;
+
     public function __construct(string $nom, string $adresse, ?int $codeAgence = null){
         $this -> codeAgence = rand(100,999);
         $this -> nom = $nom;
         $this -> adresse = $adresse;
     }
+
     public function getCodeAgence(){
         return $this -> codeAgence;
     }
-    public function setCodeAgence(array $tab){
-        
+
+    public function setCodeAgence(int $code){
+        $this -> codeAgence = $code;
+    }
+
+    public function initCodeAgence(array $tab){  
         $newCodeAgence = rand(100,999);
         for ($i = 0; $i < count($tab) -1; $i++){
             if ($tab[0] == $newCodeAgence){
@@ -26,6 +32,7 @@ class Agence{
     public function getNom(){
         return $this -> nom;
     }
+
     public function setNom(string $nom){
         return $this -> nom = $nom;
     }
@@ -33,17 +40,22 @@ class Agence{
     public function getAdresse(){
         return $this -> adresse;
     }
+
     public function setAdresse(string $adresse){
         return $this -> adresse = $adresse;
     }
-    public function __toString()
-    {
+
+    public function __toString(){
         return("Agence : " . $this->getCodeAgence() . ", " . $this->getAdresse() . ", " . $this->getNom());
     }
+
     public function toTab(){
-        return([$this-> getCodeAgence(), $this-> getAdresse(), $this-> getNom()]);
+        $tab = [];
+        $tab["code_agence"] = $this-> getCodeAgence();
+        $tab["nom"] = $this-> getNom();
+        $tab["adresse"] = $this-> getAdresse();
+        return($tab);
     }
 }
-$c = new Agence("Michelle", "dada");
-echo($c);
+
 ?>
