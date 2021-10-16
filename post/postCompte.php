@@ -1,11 +1,46 @@
 <?php
-include("../utils/constantes.php");
-include("../utils/fonctions.php");
+require("../utils/constantes.php");
+require("../utils/fonctions.php");
+require("../composants/Compte.php");
 
-echo("<p>".$_POST["id-client"]."<p>");
-echo("<p>".$_POST["id-agence"]."<p>");
-echo("<p>".$_POST["type-compte"]."<p>");
-echo("<p>".$_POST["decouvert"]."<p>");
-echo("<p>".$_POST["solde"]."<p>");
+$c;
+$clients = jsonToArray(FILE_CLIENT);
+foreach($clients as $cl){
+    if($cl["id_client"] == $_POST["id-client"]){
+        $c = $cl;
+        break;
+    }
+}
+
+$a;
+$agences = jsonToArray(FILE_AGENCE);
+foreach($agences as $ag){
+    if($ag["code_agence"] == $_POST["id-agence"]){
+        $a = $ag;
+        break;
+    }
+}
+
+$agence = new Agence($a["nom"], $a["adresse"]);
+$agence->setCodeAgence($a["code_agence"]);
+
+$client = new Client($c["nom"], $c["prenom"], $c["date_naissance"], $c["email"]);
+$client->setId($c["id_client"]);
+
+$decouvert;
+if($_POST["decouvert"] == "true"){
+    $decouvert = true;
+}
+else{
+    $decouvert = false;
+}
+
+$compte = new Compte($client, $agence, $_POST["type-compte"], $decouvert, $_POST["solde"]);
+$tab = $compte->toTab();
+
+print_r($tab);
+
+arrayToJson(FILE_COMPTE, $tab);
+
 
 ?>
