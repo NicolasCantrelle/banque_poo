@@ -2,11 +2,31 @@
     {
         "code_agence": 100,
         "nom": "Agence Tourix",
-        "adresse": "Armorique"
+        "adresse": [
+            "123",
+            "rue de Vercingétorix",
+            "Alésia",
+            "21150"
+        ]
     },
     {
         "code_agence": 999,
-        "nom": "Formation tortue",
-        "adresse": "Rome"
+        "nom": "Formation Tortue",
+        "adresse": [
+            "123",
+            "Avenue de César",
+            "Rome",
+            "00100"
+        ]
+    },
+    {
+        "code_agence": 442,
+        "nom": "Bank Wayne",
+        "adresse": [
+            "123",
+            "Avenue de Batman",
+            "Gotham",
+            "56232222"
+        ]
     }
 ]

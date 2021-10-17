@@ -1,34 +1,71 @@
 [
     {
-        "id_compte": "00000000000",
-        "code_agence": "100",
-        "id_client": "AA000000",
-        "type_compte": "PEL",
-        "solde": 434.72,
-        "decouvert_autorise": false
-    },
-    {
-        "id_compte": "99999999999",
-        "code_agence": "100",
-        "id_client": "AA000000",
+        "nom_compte": 23718208790,
+        "client": {
+            "id_client": "LL555555",
+            "nom": "Wayne",
+            "prenom": "Bruce",
+            "date_naissance": "30\/03\/1939",
+            "email": "b.wayne@gotham.gt"
+        },
+        "agence": {
+            "code_agence": 442,
+            "nom": "Bank Wayne",
+            "adresse": [
+                "123",
+                "Avenue de Batman",
+                "Gotham",
+                "56232222"
+            ]
+        },
         "type_compte": "Courant",
-        "solde": -52,
-        "decouvert_autorise": true
+        "deouvert_autorise": true,
+        "solde": -500
     },
     {
-        "id_compte": "77777777777",
-        "code_agence": "100",
-        "id_client": "AA000000",
+        "nom_compte": 87817307408,
+        "client": {
+            "id_client": "LL555555",
+            "nom": "Wayne",
+            "prenom": "Bruce",
+            "date_naissance": "30\/03\/1939",
+            "email": "b.wayne@gotham.gt"
+        },
+        "agence": {
+            "code_agence": 442,
+            "nom": "Bank Wayne",
+            "adresse": [
+                "123",
+                "Avenue de Batman",
+                "Gotham",
+                "56232222"
+            ]
+        },
         "type_compte": "Livret A",
-        "solde": 888.88,
-        "decouvert_autorise": false
+        "deouvert_autorise": true,
+        "solde": -500
     },
     {
-        "id_compte": "55555555555",
-        "code_agence": "999",
-        "id_client": "ZZ999999",
-        "type_compte": "Livret A",
-        "solde": 1999.99,
-        "decouvert_autorise": false
+        "nom_compte": 34782316261,
+        "client": {
+            "id_client": "LL555555",
+            "nom": "Wayne",
+            "prenom": "Bruce",
+            "date_naissance": "30\/03\/1939",
+            "email": "b.wayne@gotham.gt"
+        },
+        "agence": {
+            "code_agence": 442,
+            "nom": "Bank Wayne",
+            "adresse": [
+                "123",
+                "Avenue de Batman",
+                "Gotham",
+                "56232222"
+            ]
+        },
+        "type_compte": "PEL",
+        "deouvert_autorise": false,
+        "solde": 500
     }
 ]
