@@ -60,7 +60,7 @@ class Client{
     
     public function toTab(){
         $tab = [];
-        $tab["id_agence"] = $this-> getId();
+        $tab["id_client"] = $this-> getId();
         $tab["nom"] = $this-> getNom();
         $tab["prenom"] = $this-> getPrenom();
         $tab["date_naissance"] = $this-> getDateNaissance();
