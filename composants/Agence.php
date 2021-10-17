@@ -1,10 +1,10 @@
 <?php
 class Agence{
     private string $nom;
-    private string $adresse;
+    private array $adresse;
     private int $codeAgence;
 
-    public function __construct(string $nom, string $adresse, ?int $codeAgence = null){
+    public function __construct(string $nom, array $adresse){
         $this -> codeAgence = rand(100,999);
         $this -> nom = $nom;
         $this -> adresse = $adresse;
@@ -41,12 +41,25 @@ class Agence{
         return $this -> adresse;
     }
 
-    public function setAdresse(string $adresse){
+    public function setAdresse(array $adresse){
         return $this -> adresse = $adresse;
     }
 
+    public function showAdresse(){
+        $ch = "";
+        foreach($this->adresse as $elt){
+            if($elt == $this->adresse["code_postal"]){
+                $ch .= $elt;
+            }
+            else{
+                $ch .= $elt . ", ";
+            }
+        }
+        return $ch;
+    }
+
     public function __toString(){
-        return("Agence : " . $this->getCodeAgence() . ", " . $this->getAdresse() . ", " . $this->getNom());
+        return("Agence : " . $this->getCodeAgence() . ", " . $this->getNom() . ", " . $this->showAdresse());
     }
 
     public function toTab(){
