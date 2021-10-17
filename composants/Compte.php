@@ -75,8 +75,8 @@ class Compte{
         $tab["client"] = $this->getClient()->toTab();
         $tab["agence"] = $this->getAgence()->toTab();
         $tab["type_compte"] = $this->getTypeCompte();
-        $tab["deouvert_autorise"] = $this->getSolde();
-        $tab["solde"] = $this->getDecouvertAutorise();
+        $tab["deouvert_autorise"] = $this->getDecouvertAutorise();
+        $tab["solde"] = $this->getSolde();
         return($tab);
     }
 

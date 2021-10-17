@@ -23,9 +23,9 @@
         </select>
 
         <select name="decouvert" id="decouvert" hidden onchange="changeDecouvert()">
-            <option value="">--Découvert autorisé--</option>
-            <option value=true>Oui</option>
-            <option value=false>Non</option>
+            <option value="" selected>--Découvert autorisé--</option>
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
         </select>
 
         <div id="div-solde" hidden>

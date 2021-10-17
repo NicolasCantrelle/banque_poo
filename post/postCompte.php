@@ -38,9 +38,6 @@ else{
 $compte = new Compte($client, $agence, $_POST["type-compte"], $decouvert, $_POST["solde"]);
 $tab = $compte->toTab();
 
-print_r($tab);
-
-arrayToJson(FILE_COMPTE, $tab);
-
+arrayToJson(FILE_COMPTE, [$tab]);
 
 ?>

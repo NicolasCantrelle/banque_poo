@@ -19,7 +19,7 @@ function resetForm(){
     let formAgence = document.getElementById("id-agence");
     formAgence.hidden = true;
     formAgence.required = false;
-    for(let i=1; i<=formAgence.length; i++){
+    for(let i=0; i<=formAgence.length; i++){
         formAgence.remove(1);
     }
 
@@ -31,6 +31,7 @@ function resetForm(){
     }
 
     let decouvert = document.getElementById("decouvert");
+    decouvert.value = "";
     decouvert.hidden = true;
     decouvert.required = false;
 
@@ -71,9 +72,8 @@ async function changeClient(){
     typeCompteBdd = [];
     if(idClient !== ""){
         let allComptes = await getData('../bdd/comptes.json');
-
         allComptes.forEach(compte => {
-            if(compte.id_client == idClient){
+            if(compte["client"].id_client == idClient){
                 compteSelected.push(compte);
                 typeCompteBdd.push(compte.type_compte);
             }
@@ -88,10 +88,9 @@ async function changeClient(){
         }
         else if(compteSelected.length > 0){
             let option = document.createElement("option");
-            option.value = compteSelected[0]["code_agence"];
+            option.value = compteSelected[0]["agence"]["code_agence"];
             formAgence.add(option);
             option.selected = true;
-            console.log("ICI 2");
             changeAgence();
         }
         else if(compteSelected.length == 0){
@@ -154,7 +153,7 @@ function changeDecouvert(){
     solde.required = true;
     solde.removeAttribute("min");
 
-    if(decouvert == "N"){
+    if(decouvert == "false"){
         solde.min = "0";
         solde.value = "500";
     }
