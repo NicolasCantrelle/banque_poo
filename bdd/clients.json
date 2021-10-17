@@ -2,22 +2,22 @@
     {
         "id_client": "AA000000",
         "nom": "Le Gaulois",
-        "prenom": "Astérix",
-        "date_naissance": "29/10/1959",
+        "prenom": "Ast\u00e9rix",
+        "date_naissance": "29-10-1959",
         "email": "asterix@gaule.fr"
     },
     {
         "id_client": "ZZ999999",
         "nom": "Le Gaulois",
-        "prenom": "Obélix",
-        "date_naissance": "29/10/1959",
+        "prenom": "Ob\u00e9lix",
+        "date_naissance": "29-10-1959",
         "email": "obelix@gaule.fr"
     },
     {
         "id_client": "LL555555",
         "nom": "Wayne",
         "prenom": "Bruce",
-        "date_naissance": "30/03/1939",
+        "date_naissance": "30-03-1939",
         "email": "b.wayne@gotham.gt"
     }
 ]
