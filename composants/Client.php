@@ -7,7 +7,7 @@ class Client{
     private string $mail;
 
     public function __construct(string $nom, string $prenom, string $dateNaissance, string $mail){
-        $this -> id = rand(10000000000, 99999999999);
+        $this -> id = chr(rand(65,90)) . chr(rand(65,90)) . rand(100000, 999999);
         $this -> nom = $nom;
         $this -> prenom = $prenom;
         $this -> dateNaissance = $dateNaissance;
