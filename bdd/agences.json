@@ -4,8 +4,8 @@
         "nom": "Agence Tourix",
         "adresse": [
             "123",
-            "rue de Vercingétorix",
-            "Alésia",
+            "rue de Vercing\u00e9torix",
+            "Al\u00e9sia",
             "21150"
         ]
     },
@@ -14,7 +14,7 @@
         "nom": "Formation Tortue",
         "adresse": [
             "123",
-            "Avenue de César",
+            "Avenue de C\u00e9sar",
             "Rome",
             "00100"
         ]
