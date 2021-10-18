@@ -33,7 +33,7 @@
             <input type="number" id="solde" name="solde">
         </div>
 
-        <input id="btn-envoyer" type="submit" value="ENVOYER">
+        <input id="btn-envoyer" name="btn-envoyer" type="submit" value="ENVOYER">
 
     </form>
     

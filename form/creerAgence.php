@@ -20,7 +20,7 @@
         <input type="text" id="ville" name="ville" placeholder="ville" required>
         <input type="number" id="code-postal" name="code-postal" placeholder="code postal" required>
 
-        <input id="btn-envoyer" type="submit" value="ENVOYER">
+        <input id="btn-envoyer" name="btn-envoyer" type="submit" value="ENVOYER">
         
     </form>
     
