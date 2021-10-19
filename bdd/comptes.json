@@ -5,7 +5,7 @@
             "id_client": "LL555555",
             "nom": "Wayne",
             "prenom": "Bruce",
-            "date_naissance": "30\/03\/1939",
+            "date_naissance": "30-03-1939",
             "email": "b.wayne@gotham.gt"
         },
         "agence": {
@@ -28,7 +28,7 @@
             "id_client": "LL555555",
             "nom": "Wayne",
             "prenom": "Bruce",
-            "date_naissance": "30\/03\/1939",
+            "date_naissance": "30-03-1939",
             "email": "b.wayne@gotham.gt"
         },
         "agence": {
@@ -51,7 +51,7 @@
             "id_client": "LL555555",
             "nom": "Wayne",
             "prenom": "Bruce",
-            "date_naissance": "30\/03\/1939",
+            "date_naissance": "30-03-1939",
             "email": "b.wayne@gotham.gt"
         },
         "agence": {
